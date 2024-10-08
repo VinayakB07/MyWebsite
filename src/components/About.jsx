@@ -24,8 +24,10 @@ className='bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-even
 }
 const About = () => {
   return (
-    <>
-      <motion.div variants={textVariant()}>
+    <section id='about'>
+      <motion.div variants={textVariant()} initial='hidden'
+        whileInView='show'
+        viewport={{ once: true, amount: 0.5 }}>
         <p className={styles.sectionSubText}>Introduction</p>
         <h2 className={styles.sectionHeadText}>Overview.</h2>
       </motion.div>
@@ -37,7 +39,7 @@ const About = () => {
           <ServiceCard key={service.title} index={index} {...service} />
         ))}
       </div>
-    </>
+    </section>
   )
 }
 

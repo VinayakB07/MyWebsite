@@ -13,7 +13,7 @@ const computer=useGLTF(isMobile?'./head/scene.gltf':'./desktop_pc/scene.gltf')
     <primitive 
     object={computer.scene} 
     scale={isMobile?10:0.8}
-    position={isMobile?[1.5, -3,0]:[0, -3.25, -1.5]}
+    position={isMobile?[1.5, -2,0]:[0, -3.25, -1.5]}
     rotation={isMobile?[0,0.6,0]:[0, 0.35,-0.1]}
     onBeforeRender={(scene, camera, geometry, material) => {
       if (material) {
