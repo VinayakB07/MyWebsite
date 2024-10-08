@@ -82,16 +82,20 @@ import {
       icon: firebase,
     },
     {
+      name: "Java",
+      icon: java,
+    },
+    {
+      name: "React JS",
+      icon: reactjs,
+    },
+    {
       name: "Dart",
       icon: dart,
     },
     {
       name: "MySQL",
       icon: mysql,
-    },
-    {
-      name: "Java",
-      icon: java,
     },
     {
       name: "Spring-Boot",
@@ -109,11 +113,6 @@ import {
     {
       name: "JavaScript",
       icon: javascript,
-    },
-    
-    {
-      name: "React JS",
-      icon: reactjs,
     },
   
     {
