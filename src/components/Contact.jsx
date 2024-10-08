@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
@@ -16,6 +16,7 @@ const Contact = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
 
   const handleChange = (e) => {
     const { target } = e;
@@ -34,7 +35,7 @@ const Contact = () => {
     emailjs
       .send(
         'service_6stbdq3',
-       'template_1w005us',
+        'template_1w005us',
         {
           from_name: form.name,
           to_name: "JavaScript Mastery",
@@ -42,7 +43,7 @@ const Contact = () => {
           to_email: "sujata@jsmastery.pro",
           message: form.message,
         },
-       'ka5VqV38yxftDI7fN'
+        'ka5VqV38yxftDI7fN'
       )
       .then(
         () => {
@@ -64,12 +65,23 @@ const Contact = () => {
       );
   };
 
+  // Effect to handle window resizing
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 600);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
-    <div
-      className={`xl:mt-12 flex xl:flex-row flex-col gap-10 overflow-hidden`}
-    >
+    <div className={`xl:mt-12 flex xl:flex-row flex-col gap-10 overflow-hidden`}>
       <motion.div
-        variants={slideIn("left", "tween", 0.2, 1)}
+        variants={!isMobile ? slideIn("left", "tween", 0.2, 1) : {}}
         className='flex-[0.65] bg-black-100 p-8 rounded-2xl'
       >
         <p className={styles.sectionSubText}>Get in touch</p>
@@ -124,7 +136,7 @@ const Contact = () => {
       </motion.div>
 
       <motion.div
-        variants={slideIn("right", "tween", 0.2, 1)}
+        variants={!isMobile ? slideIn("right", "tween", 0.2, 1) : {}}
         className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'
       >
         <EarthCanvas />
